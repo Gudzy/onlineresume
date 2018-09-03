@@ -7,7 +7,7 @@ class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      buttons: true,
+      buttons: false,
       home: true,
       about: false,
       contact: false,
@@ -21,21 +21,27 @@ class App extends Component {
 
   renderHeader() {
     return(
-      <div id="navbar">
-
-
-        <a id="logo" onClick={e => {
+      <div>
+      <button  className={this.state.buttons?"hide":"show"} onClick={e => {
               e.preventDefault();
               this.setState({ buttons: !this.state.buttons
               });
+            }}><i class="fa fa-bars"></i></button>
+      {this.state.buttons?
+      <div id="navbar">
+        <a id="logo" onClick={e => {
+              e.preventDefault();
+              this.setState({ home: true, contact: false, about: false
+              });
             }}>{this.state.buttons? "Gustav Dyngeseth" : "Gustav Dyngeseth"} </a>
+
         {this.state.buttons?
         <div id="navbar-right">
           <a className={this.state.home? "active" : ""} onClick={e => {
               e.preventDefault();
               this.setState({ home: true, contact: false, about: false
               });
-            }}>Home</a>
+            }}><i class="fa fa-home"></i> Home</a>
           <a className={this.state.contact? "active" : ""} onClick={e => {
               e.preventDefault();
               this.setState({ contact:true, home: false, about: false
@@ -46,7 +52,13 @@ class App extends Component {
               this.setState({ about: true, contact: false, home: false
               });
             }}>About</a>
+          <a  id="close" onClick={e => {
+              e.preventDefault();
+              this.setState({ buttons: !this.state.buttons
+              });
+            }}><i class="fa fa-close"></i></a>
         </div> : ""}
+      </div> : ""}
       </div>
     );
   }
@@ -56,7 +68,8 @@ class App extends Component {
   renderHome() {
     return (this.state.home?
       <div id="home">
-        <div className="hero-image">
+        <div className="hero-image" >
+        <img src={pb}></img>
         <div className="hero-text">
           <h1>I am Gustav Dyngeseth</h1>
           <h3>And I'm an Engineer</h3>
