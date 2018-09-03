@@ -7,6 +7,7 @@ class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
+      buttons: true,
       home: true,
       about: false,
       contact: false,
@@ -14,10 +15,21 @@ class App extends Component {
     };
   }
 
+  buttonFunction(x) {
+    x.classList.toggle("change");
+}
+
   renderHeader() {
     return(
       <div id="navbar">
-        <a id="logo">Gustav Dyngeseth</a>
+
+
+        <a id="logo" onClick={e => {
+              e.preventDefault();
+              this.setState({ buttons: !this.state.buttons
+              });
+            }}>{this.state.buttons? "Gustav Dyngeseth" : "Gustav Dyngeseth"} </a>
+        {this.state.buttons?
         <div id="navbar-right">
           <a className={this.state.home? "active" : ""} onClick={e => {
               e.preventDefault();
@@ -34,7 +46,7 @@ class App extends Component {
               this.setState({ about: true, contact: false, home: false
               });
             }}>About</a>
-        </div>
+        </div> : ""}
       </div>
     );
   }
@@ -44,30 +56,17 @@ class App extends Component {
   renderHome() {
     return (this.state.home?
       <div id="home">
-        <p>HOME</p>
-        <p>HOME</p>
-        <p>HOME</p>
-        <p>HOME</p>
-        <p>HOME</p>
-        <p>HOME</p>
-        <p>HOME</p>
-        <p>HOME</p>
-        <p>HOME</p>
-        <p>HOME</p>
-        <p>HOME</p>
-        <p>HOME</p>
-        <p>HOME</p>
-        <p>HOME</p>
-        <p>HOME</p>
-        <p>HOME</p>
-        <p>HOME</p>
-        <p>HOME</p>
-        <p>HOME</p>
-        <p>HOME</p>
-        <p>HOME</p>
-        <p>HOME</p>
-        <p>HOME</p>
-
+        <div className="hero-image">
+        <div className="hero-text">
+          <h1>I am Gustav Dyngeseth</h1>
+          <h3>And I'm an Engineer</h3>
+          <button onClick={e => {
+              e.preventDefault();
+              this.setState({ about: true, home: false
+              });
+            }}>About</button>
+        </div>
+      </div>
       </div> : ""
     );
   }
@@ -75,7 +74,9 @@ class App extends Component {
   renderContact() {
     return(this.state.contact?
       <div>
-        Kontaktinfo
+        <p>Lets talk!</p>
+        <p> e-mail: gustdyn@gmail.com</p>
+        <p>tlf: +47 40 01 92 30</p>
       </div>
     : "");
   }
