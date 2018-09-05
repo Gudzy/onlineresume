@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
 import './App.css';
 import pb from './pb.jpg';
 
@@ -15,8 +14,8 @@ class App extends Component {
     };
   }
 
-  buttonFunction(x) {
-    x.classList.toggle("change");
+  scrollDown() {
+    window.scrollBy(0, 800);
 }
 
   renderHeader() {
@@ -29,11 +28,13 @@ class App extends Component {
             }}><i class="fa fa-bars"></i></button>
       {this.state.buttons?
       <div id="navbar">
-        <a id="logo" onClick={e => {
+        
+        <b id="logo" onClick={e => {
               e.preventDefault();
               this.setState({ home: true, contact: false, about: false
               });
-            }}>{this.state.buttons? "Gustav Dyngeseth" : "Gustav Dyngeseth"} </a>
+            }}>{this.state.buttons? "Gustav Dyngeseth" : "Gustav Dyngeseth"} </b>
+            
 
         {this.state.buttons?
         <div id="navbar-right">
@@ -44,8 +45,8 @@ class App extends Component {
             }}><i class="fa fa-home"></i> Home</a>
           <a className={this.state.contact? "active" : ""} onClick={e => {
               e.preventDefault();
-              this.setState({ contact:true, home: false, about: false
-              });
+
+              this.scrollDown();
             }}>Contact</a>
           <a className={this.state.about? "active" : ""} onClick={e => {
               e.preventDefault();
@@ -62,16 +63,14 @@ class App extends Component {
       </div>
     );
   }
-
   
-
   renderHome() {
     return (this.state.home?
       <div id="home">
         <div className="hero-image" >
         <img src={pb}></img>
         <div className="hero-text">
-          <h1>I am Gustav Dyngeseth</h1>
+          <h2>I am Gustav Dyngeseth</h2>
           <h3>And I'm an Engineer</h3>
           <button onClick={e => {
               e.preventDefault();
@@ -105,8 +104,8 @@ class App extends Component {
   <div id="myBar">40%</div>
 </div>
         <p className="title"></p>
-        <button class="btn"><i class="fa fa-download"></i>Resume</button>
-        <button class="btn"><i class="fa fa-download"></i>Transcript</button>
+        <a href="https://drive.google.com/file/d/1tDqfFWaM9YCJAaLQHSNDT-BtDa-5_3Ai/view"><button class="btn"><i class="fa fa-download"></i>Resume</button></a>
+        <a href="https://drive.google.com/file/d/1gfqw0caDmyvBKGifDveqkaTn-eeU-eXQ/view"><button class="btn"><i class="fa fa-download"></i>Transcript</button></a>
       </div>
     : "");
   }
@@ -136,7 +135,6 @@ class App extends Component {
 
         <div className="item2">
           {this.renderHome()}
-          {this.renderContact()}
           {this.renderAbout()}
         </div>
 
