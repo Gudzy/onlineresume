@@ -17,6 +17,17 @@ body {
   box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19);
 }
 
+.pdf {
+  background-color: black;
+  min-height: 800px;  
+  margin: 0 auto;
+  text-align: center;
+  position: auto;
+  cursor: pointer;
+  background-color: white;
+  width: 100%;
+}
+
 #navbar a {
   float: left;
   color: black;
@@ -33,6 +44,7 @@ body {
   font-size: 35px;
   font-weight: bold;
   transition: 0.4s;
+  text-align: left;
 }
 
 #navbar a:hover {
@@ -64,6 +76,8 @@ body {
 	animation: Gradient 15s ease infinite;
   position: auto;
   bottom: 0%;
+  height: 400px;
+  text-align: center;
 }
 
 #home {
@@ -94,12 +108,6 @@ body {
     font-size: 25px;
   }
 
-  #footer {
-    padding: 20px 10px !important;
-  }
-
-
-
 }
 
 .item1 { grid-area: header; }
@@ -112,12 +120,11 @@ body {
     'header header header header header header'
     'main main main main main main'
     'footer footer footer footer footer footer';
-  background-color: rgb(46, 45, 45)
-}
+    background: linear-gradient(-45deg, rgb(255, 255, 255), rgb(233, 233, 233), rgb(53, 54, 54), rgb(20, 20, 20));
+  }
 
 .grid-container > div {
   background-color: rgba(70, 68, 68, 0.8);
-  text-align: center;
   font-size: 30px;
 }
 
@@ -143,7 +150,7 @@ h4,
     font-size: 1.2em;
 }
 ._14 {
-    font-size: 0.9em;
+    font-size: 0.8em;
     color: white;
 }
 ul {
@@ -178,9 +185,15 @@ ul.social-icons {
     -webkit-transition:.5s;
     transition: .5s;
     background-color: #322f30;
+    border-radius: 30%;
+    width: 52px;
+
+
 }
 .fa-facebook:hover {
     background-color: #3d5b99;
+    border-radius: 50%;
+
 }
 
 .fa-linkedin {
@@ -191,9 +204,15 @@ ul.social-icons {
     -webkit-transition:.5s;
     transition: .5s;
     background-color: #322f30;
+    border-radius: 30%;
+    width: 52px;
+
+
 }
 .fa-linkedin:hover {
     background-color: #0073a4;
+    border-radius: 50%;
+
 }
 .fa-instagram {
     padding:10px 9px;
@@ -203,9 +222,32 @@ ul.social-icons {
     -webkit-transition:.5s;
     transition: .5s;
     background-color: #322f30;
+    border-radius: 30%;
+    width: 52px;
+
 }
 .fa-instagram:hover {
     background-color: #cd486b;
+    border-radius: 50%;
+
+}
+
+.fa-github {
+  padding:10px 9px;
+  -o-transition:.5s;
+  -ms-transition:.5s;
+  -moz-transition:.5s;
+  -webkit-transition:.5s;
+  transition: .5s;
+  background-color: #322f30;
+  border-radius: 30%;
+  width: 52px;
+
+
+}
+.fa-github:hover {
+  background-color: #cd486b;
+  border-radius: 50%;
 }
 
 .card {
@@ -222,6 +264,8 @@ ul.social-icons {
   color: grey;
   font-size: 20px;
 }
+
+
 
 button {
   border: none;
@@ -249,6 +293,29 @@ button {
 img {
   width: 100%;
   min-height: 500px;
+
+}
+
+.footerimg{
+  max-width: 150px;
+  min-height: 150px;
+  border-radius: 40%;
+  cursor: pointer;
+
+
+}
+
+.footerimg:hover{
+  max-width: 150px;
+  min-height: 150px;
+  border-radius: 50%;
+  box-shadow: 0 16px 20px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19);
+}
+
+p {
+  font-size: 12px;
+  font-family: Arial;
+  color: white;
 }
 
 button:hover, a:hover {
@@ -272,13 +339,23 @@ button:hover, a:hover {
 
 
 .hero-image {
-  background-color: #cccccc;
   height: 500px;
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
   position: relative;
   margin-bottom: 5px;
+  
+}
+
+.whitespace {
+  height: 300px;
+  background: linear-gradient(-45deg, rgb(255, 255, 255), rgb(233, 233, 233), rgb(53, 54, 54), rgb(20, 20, 20));
+	background-size: 300% 300%;
+	-webkit-animation: Gradient 15s ease infinite;
+	-moz-animation: Gradient 15s ease infinite;
+	animation: Gradient 15s ease infinite;
+  position: auto;
 }
 
 .hero-text {
@@ -313,16 +390,17 @@ button:hover, a:hover {
 
 
 b {
-  position: relative;
-  font-size: 70px;
-  margin-top: 0;
   font-family: 'Lobster', helvetica, arial;
   text-decoration: none;
   color: #666;
   position: relative;
-   
+  cursor: pointer; 
   -webkit-mask-image: -webkit-gradient(linear, left top, left bottom, from(rgba(0,0,0,1)), color-stop(50%, rgba(0,0,0,.5)), to(rgba(0,0,0,1)));
 }
+
+
+
+
 
 @-webkit-keyframes Gradient {
 	0% {
