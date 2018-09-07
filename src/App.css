@@ -108,6 +108,11 @@ body {
     font-size: 25px;
   }
 
+  #navbar:hover {
+    opacity: 1.0;
+  }
+  
+
 }
 
 .item1 { grid-area: header; }

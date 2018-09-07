@@ -37,7 +37,7 @@ class App extends Component {
         
         <b id="logo" onClick={e => {
               e.preventDefault();
-              this.setState({ home: true, contact: false, about: false
+              this.setState({ home: true, contact: false, about: false, buttons: false
               });
             }}>{this.state.buttons? "Gustav Dyngeseth" : "Gustav Dyngeseth"} </b>
             
@@ -46,16 +46,18 @@ class App extends Component {
         <div id="navbar-right">
           <a className={this.state.home? "active" : ""} onClick={e => {
               e.preventDefault();
-              this.setState({ home: true, contact: false, about: false
+              this.setState({ home: true, contact: false, about: false, buttons: false
               });
             }}><i class="fa fa-home"></i> Home</a>
           <a className={this.state.contact? "active" : ""} onClick={e => {
               e.preventDefault();
               this.scrollDown();
+              this.setState({ buttons: false,
+              });
             }}>Contact</a>
           <a className={this.state.about? "active" : ""} onClick={e => {
               e.preventDefault();
-              this.setState({ about: true, contact: false, home: false
+              this.setState({ about: true, contact: false, home: false, buttons: false,
               });
             }}>About</a>
           <a  id="close" onClick={e => {
