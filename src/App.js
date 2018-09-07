@@ -15,6 +15,7 @@ class App extends Component {
       home: true,
       about: false,
       contact: false,
+      experience: false,
       cvnor: false,
       cveng: false
     };
@@ -49,17 +50,23 @@ class App extends Component {
               this.setState({ home: true, contact: false, about: false, buttons: false
               });
             }}><i class="fa fa-home"></i> Home</a>
+
+          <a className={this.state.about? "active" : ""} onClick={e => {
+              e.preventDefault();
+              this.setState({ about: true, contact: false, home: false, buttons: false,
+              });
+            }}>About</a>
+          <a className={this.state.about? "active" : ""} onClick={e => {
+              e.preventDefault();
+              this.setState({ experience: true, contact: false, home: false, about: false, buttons: false,
+              });
+            }}>Experience</a>
           <a className={this.state.contact? "active" : ""} onClick={e => {
               e.preventDefault();
               this.scrollDown();
               this.setState({ buttons: false,
               });
             }}>Contact</a>
-          <a className={this.state.about? "active" : ""} onClick={e => {
-              e.preventDefault();
-              this.setState({ about: true, contact: false, home: false, buttons: false,
-              });
-            }}>About</a>
           <a  id="close" onClick={e => {
               e.preventDefault();
               this.setState({ buttons: !this.state.buttons
@@ -119,6 +126,16 @@ class App extends Component {
     : "");
   }
 
+
+  
+  renderExperience() {
+    return(this.state.experience?
+      <div>
+        
+      </div>
+    : "");
+  }
+
   renderNorCV() { 
     return (
     this.state.cvnor ?
@@ -147,7 +164,9 @@ class App extends Component {
             <picture >
               <img  src={pb4} alt="Flowers" className="footerimg"/>
             </picture>
+            <a href="mailto:gustav.dyngeseth@spireconsulting.no">
             <p>gustav.dyngeseth@spireconsulting.no</p>
+            </a>
             <p>+ 47 400 19 230</p>
             <ul class="social-icons">   
                 <li><a href="https://www.linkedin.com/in/gustavdyngeseth/" class="social-icon"> <i class="fa fa-linkedin"></i></a></li>
@@ -171,6 +190,7 @@ class App extends Component {
         <div className="item2">
           {this.renderHome()}
           {this.renderAbout()}
+          {this.renderExperience()}
         </div>
 
         <div className="item3"> 
