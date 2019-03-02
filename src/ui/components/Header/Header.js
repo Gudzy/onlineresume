@@ -1,9 +1,11 @@
 import React, { Component } from 'react';
 import _ from 'lodash';
-import { Redirect } from 'react-router-dom';
+import { Redirect, Link } from 'react-router-dom';
 
 import ContactIcon from '@material-ui/icons/Phone';
 import Typography from '@material-ui/core/Typography';
+import Avatar from '@material-ui/core/Avatar';
+
 
 import menuRoutes from '../../../routes';
 
@@ -14,14 +16,11 @@ class Header extends Component{
         buttons: false,
     }
 
-    scrollDown() {
+    scrollDown = () => {
         window.scrollBy(0, 800);
     }
 
-    
-
     renderMenu() {
-        const { currentRoute } = this.state;
         return(
             <div>
             <button  className={this.state.buttons?"hide":"show"} onClick={e => {
@@ -35,7 +34,7 @@ class Header extends Component{
                     e.preventDefault();
                     this.setState({ route: '', redirect: true
                     });
-                  }}>{this.state.buttons? "Gustav Dyngeseth" : "Gustav Dyngeseth"} </b>
+                  }}>Gustav Dyngeseth</b>
                   
                   
                 {this.state.buttons?
@@ -76,6 +75,19 @@ class Header extends Component{
         );
     }
 }
+
+const styles = {
+  list: {
+    width: 220,
+  },
+  fullList: {
+    width: 'auto',
+  },
+  bigAvatar: {
+    width: 180,
+    height: 100,
+  },
+};
 
 
 

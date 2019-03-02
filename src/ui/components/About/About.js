@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
 import _ from 'lodash';
-import { Redirect } from 'react-router-dom';
 
 import pb from '../../../resources/pb.jpg';
 import cv from '../../../resources/GD_CV.pdf';
+import spirelogo from '../../../resources/GustavDyngesethLogo.jpg';
 
 class About extends Component{
     state = {
@@ -23,9 +23,13 @@ class About extends Component{
             <div>
                 <div className="card">
                     <img src={pb} alt="Gustav"/>
-                    <h4>Gustav Dyngeseth</h4>
-                    <p className="title">IT Consultant</p>
-                    <p className="title">Computer Science student - Norwegian University of Science and Technology</p>
+                    <a href="https://www.linkedin.com/in/gustavdyngeseth/">
+                    <picture >
+                        <img  src={spirelogo} alt="Flowers" className="footerimg"/>
+                    </picture>
+                    </a>
+                    <p className="title"><a href="https://www.spireconsulting.no/">Partner & CTO 👔 Spire Consulting</a></p>
+                    <p className="title"><a href="https://www.ntnu.edu/studies/mtdt">M.Sc. Computer Science 🎓 NTNU</a></p>
                     <div id="myProgress">
                         <div id="myBar">50%</div>
                     </div>

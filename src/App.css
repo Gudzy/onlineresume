@@ -77,7 +77,7 @@ body {
 	animation: Gradient 15s ease infinite;
   position: auto;
   bottom: 0%;
-  height: 400px;
+  height: 650px;
   text-align: center;
 }
 
@@ -262,7 +262,7 @@ ul.social-icons {
   margin: 0 auto;
   text-align: center;
   position: auto;
-  cursor: pointer;
+  
   background-color: white;
 }
 
@@ -290,6 +290,14 @@ button {
   text-decoration: none;
   font-size: 22px;
   color: black;
+  cursor: pointer;
+}
+
+.card a:hover {
+  text-decoration: none;
+  font-size: 22px;
+  color: black;
+  cursor: pointer;
 }
 
 .card img {
