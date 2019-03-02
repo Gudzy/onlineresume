@@ -1,9 +1,11 @@
 import React, { Component } from 'react';
 import _ from 'lodash';
 import { Redirect } from 'react-router-dom';
-import menuRoutes from '../../../routes';
-import ContactIcon from '@material-ui/icons/Phone';
 
+import ContactIcon from '@material-ui/icons/Phone';
+import Typography from '@material-ui/core/Typography';
+
+import menuRoutes from '../../../routes';
 
 class Header extends Component{
     state = {
@@ -42,7 +44,7 @@ class Header extends Component{
                     <a className={window.location.pathname == route.path ? "active" : ""} onClick={e => {
                             e.preventDefault();
                             this.setState({ route: route.path, redirect: true });
-                        }}>{route.icon} {route.name}
+                        }}>{route.icon} {route.title}
                     </a>
                 ))}
                 <a onClick={e => {
@@ -50,7 +52,7 @@ class Header extends Component{
                     this.scrollDown();
                     this.setState({ buttons: false, 
                     });
-                  }}><ContactIcon/>Contact</a>
+                  }}><ContactIcon/><Typography>Contact</Typography></a>
                 <a id="close" onClick={e => {
                     e.preventDefault();
                     this.setState({ buttons: !this.state.buttons

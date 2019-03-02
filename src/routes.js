@@ -2,6 +2,7 @@ import React from 'react';
 
 import HomeIcon from '@material-ui/icons/Home';
 import AccountIcon from '@material-ui/icons/AccountCircle';
+import Typography from '@material-ui/core/Typography';
 
 import Home from './ui/components/Home/Home';
 import About from './ui/components/About/About';
@@ -12,7 +13,8 @@ const menuRoutes = [
         path: '/',
         component: <Home/>,
         exact: true,
-        icon: <HomeIcon/>
+        icon: <HomeIcon/>,
+        title: <Typography>Home</Typography>
     },
     {
         name: 'About',
@@ -20,6 +22,7 @@ const menuRoutes = [
         component: <About/>,
         exact: false,
         icon: <AccountIcon />,
+        title: <Typography>About</Typography>
     },
 ];
 
