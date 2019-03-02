@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import _ from 'lodash';
 
 import pb4 from '../../../resources/pb4.png';
-import spirelogo from '../../../resources/GustavDyngesethLogo.jpg';
 
 
 class Footer extends Component{
@@ -11,9 +10,11 @@ class Footer extends Component{
             <div id="footer">
                 <div class="footer-social-icons">
                     <p style={{paddingBottom: "20px",fontSize: "27px",fontWeight:550,color: "#DDDDDD"}}>Contact me</p>
+                    <a href="https://www.linkedin.com/in/gustavdyngeseth/">
                     <picture >
                         <img  src={pb4} alt="Flowers" className="footerimg"/>
                     </picture>
+                    </a>
                     <p style={{paddingBottom: "4px", fontSize: '17px', fontWeight:600}}>
                         <a href="tel:+47 400 19 230">
                         +47 400 19 230
