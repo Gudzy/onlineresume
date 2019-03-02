@@ -1,11 +1,12 @@
 import React, { Component } from 'react';
 import './App.css';
-import pb from './pb.jpg';
-import pb2 from './pb2.png';
-import pb3 from './GD_PB.jpg';
-import pb4 from './pb4.png';
-import cv from './GD_CV.pdf';
-import spire from './spirelogo.png';
+import Home from './ui/components/Home/Home';
+import { BrowserRouter as Router, Route } from 'react-router-dom';
+import _ from 'lodash';
+
+import pb4 from './resources/pb4.png';
+import menuRoutes from './routes';
+import Header from './ui/components/Header/Header';
 
 class App extends Component {
   constructor(props) {
@@ -23,7 +24,7 @@ class App extends Component {
 
   scrollDown() {
     window.scrollBy(0, 800);
-}
+  }
 
   renderHeader() {
     return(
@@ -34,11 +35,10 @@ class App extends Component {
               });
             }}><i class="fa fa-bars"></i></button>
       {this.state.buttons?
-      <div id="navbar">
-        
+      <div id="navbar">    
         <b id="logo" onClick={e => {
               e.preventDefault();
-              this.setState({ home: true, contact: false, about: false, buttons: false
+              this.setState({ home: true, contact: false, about: false, buttons: false, experience: false,
               });
             }}>{this.state.buttons? "Gustav Dyngeseth" : "Gustav Dyngeseth"} </b>
             
@@ -47,16 +47,16 @@ class App extends Component {
         <div id="navbar-right">
           <a className={this.state.home? "active" : ""} onClick={e => {
               e.preventDefault();
-              this.setState({ home: true, contact: false, about: false, buttons: false
+              this.setState({ home: true, contact: false, about: false, buttons: false, experience: false
               });
             }}><i class="fa fa-home"></i> Home</a>
 
           <a className={this.state.about? "active" : ""} onClick={e => {
               e.preventDefault();
-              this.setState({ about: true, contact: false, home: false, buttons: false,
+              this.setState({ about: true, contact: false, home: false, buttons: false, experience: false
               });
             }}>About</a>
-          <a className={this.state.about? "active" : ""} onClick={e => {
+          <a className={this.state.experience? "active" : ""} onClick={e => {
               e.preventDefault();
               this.setState({ experience: true, contact: false, home: false, about: false, buttons: false,
               });
@@ -64,10 +64,10 @@ class App extends Component {
           <a className={this.state.contact? "active" : ""} onClick={e => {
               e.preventDefault();
               this.scrollDown();
-              this.setState({ buttons: false,
+              this.setState({ buttons: false, experience: false, contact: false, home: false, about: false, buttons: false, contact: true,
               });
             }}>Contact</a>
-          <a  id="close" onClick={e => {
+          <a id="close" onClick={e => {
               e.preventDefault();
               this.setState({ buttons: !this.state.buttons
               });
@@ -78,56 +78,7 @@ class App extends Component {
     );
   }
   
-  renderHome() {
-    return (this.state.home?
-      <div id="home">
-        <div className="hero-image" >
-        <img src={pb}></img>
-        <div className="hero-text">
-          <h2>I am Gustav Dyngeseth</h2>
-          <h3>And I'm an Engineer</h3>
-          <button onClick={e => {
-              e.preventDefault();
-              this.setState({ about: true, home: false
-              });
-            }}>About</button>
-        </div>
-      </div>
 
-      <div className="whitespace">
-      </div>
-
-      </div> : ""
-    );
-  }
-
- 
-
-
-  renderAbout() {
-    return(this.state.about?
-      <div>
-        <div className="card">
-          <img src={pb} alt="Gustav"></img>
-          <h4>Gustav Dyngeseth</h4>
-          <p className="title">IT Consultant</p><p className="title">Computer Science student - Norwegian University of Science and Technology</p>
-          <div id="myProgress">
-            <div id="myBar">40%</div>
-          </div>
-          <p className="title"></p>
-          <a onClick={e => {
-                e.preventDefault();
-                this.setState({ cvnor: !this.state.cvnor
-                });
-              }}><button class="btn"><i class="fa fa-show"></i>Curriculum Vitae</button></a>
-        </div>
-        {this.renderNorCV()}
-      </div>
-    : "");
-  }
-
-
-  
   renderExperience() {
     return(this.state.experience?
       <div>
@@ -135,26 +86,6 @@ class App extends Component {
       </div>
     : "");
   }
-
-  renderNorCV() { 
-    return (
-    this.state.cvnor ?
-      <object className="pdf" data={cv}>
-      </object>
-      : ""
-    );
-  }
-
-  renderEngCV() {
-    return (
-      this.state.cveng ?           
-      <object class="pdf" data={cv} width="100%" >
-      </object> : ""
-
-    );
-  }
-
-
 
   renderFooter() {
     return(
@@ -182,21 +113,27 @@ class App extends Component {
 
   render() {
     return (
-      <div className="grid-container">
-        <div className="item1">
-          {this.renderHeader()}
-        </div>
+      <Router>
+        <div className="grid-container">
 
-        <div className="item2">
-          {this.renderHome()}
-          {this.renderAbout()}
-          {this.renderExperience()}
-        </div>
+          <div className="item1">
+            <Header />
+          </div>
 
-        <div className="item3"> 
-          {this.renderFooter()}
+          <div className="item2">
+              {menuRoutes.map(route => (
+                    <div key={route.path}>
+                      <Route exact={route.exact} path={route.path} render={()=> route.component} />
+                    </div>
+                  ))}
+          </div>
+
+          <div className="item3"> 
+            {this.renderFooter()}
+          </div>
+          
         </div>
-      </div>
+      </Router>
     );
   }
 }
